@@ -18,20 +18,20 @@ func _physics_process(delta: float) -> void:
 	
 	var jump := Input.is_action_just_pressed("ui_jump")
 
-	if jump and !jumping:
-		jumping = true
+	if jump and is_on_floor():
+		#jumping = true
 		v_speed += jump_speed
 
-	if jumping:
-		velocity.y += v_speed
-		v_speed += gravity
+	#if jumping:
+	velocity.y += v_speed
+	v_speed += gravity
 
-	move_and_slide(velocity, Vector3(0,1,0))
+	move_and_slide(velocity, Vector3(0,1,0), true)
 	#translate(velocity * delta)
 	
-	if translation.y <= 0:
-		jumping = false
-		translation.y = 0
+	if is_on_floor():
+		#jumping = false
+		#translation.y = 0
 		v_speed = 0
 
 	if velocity.x != 0:
