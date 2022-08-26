@@ -10,6 +10,46 @@
 [sub_resource type="BoxShape" id=35]
 extents = Vector3( 0.791848, 0.017, 0.017 )
 
+[sub_resource type="AtlasTexture" id=20]
+flags = 16
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 16
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 16
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 16
+atlas = ExtResource( 5 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 20, 35 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 20, 0, 20, 35 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 40, 0, 20, 35 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 60, 0, 20, 35 )
+
 [sub_resource type="AtlasTexture" id=29]
 flags = 16
 atlas = ExtResource( 2 )
@@ -70,56 +110,11 @@ flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 240, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=25]
-flags = 16
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 20, 35 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 16
-atlas = ExtResource( 1 )
-region = Rect2( 20, 0, 20, 35 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 16
-atlas = ExtResource( 1 )
-region = Rect2( 40, 0, 20, 35 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 16
-atlas = ExtResource( 1 )
-region = Rect2( 60, 0, 20, 35 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 16
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 16
-atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 16
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 16
-atlas = ExtResource( 5 )
-region = Rect2( 144, 0, 48, 48 )
-
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "Move",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "Climb",
+"name": "Jump",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
@@ -127,9 +122,14 @@ animations = [ {
 "name": "Idle",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
 "loop": true,
-"name": "Jump",
+"name": "Move",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Fall",
 "speed": 5.0
 } ]
 
@@ -142,6 +142,7 @@ __meta__ = {
 }
 animated_sprite_node = NodePath("AnimatedSprite")
 move_speed = 10
+jump_speed = 30
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138026, 0.0381322, 0 )
@@ -150,7 +151,7 @@ shape = SubResource( 35 )
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, -0.194978, 1.76441, 0 )
 frames = SubResource( 5 )
-animation = "Idle"
+animation = "Fall"
 frame = 2
 playing = true
 

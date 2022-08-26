@@ -1,10 +1,11 @@
 class_name Character
 extends AnimKinematicBody
 
-onready var states := $MovementStateManager
+onready var states = $MovementStateManager as BaseStateManager
 
 func _ready() -> void:
 	states.init(self)
+	$AnimatedSprite.translation.y = translation.z
 
 func _unhandled_input(event: InputEvent) -> void:
 	states.input(event)

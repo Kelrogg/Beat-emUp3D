@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scripts/fsm/base_state_manager.gd" type="Script" id=1]
-[ext_resource path="res://src/scripts/fsm/movement/player/idle_state.gd" type="Script" id=2]
-[ext_resource path="res://src/scripts/fsm/movement/player/move_state.gd" type="Script" id=3]
-[ext_resource path="res://src/scripts/fsm/movement/player/fall_state.gd" type="Script" id=4]
-[ext_resource path="res://src/scripts/fsm/movement/player/jump_state.gd" type="Script" id=5]
+[ext_resource path="res://src/scripts/fsm/movement/player_states/idle.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/fsm/movement/player_states/move.gd" type="Script" id=3]
+[ext_resource path="res://src/scripts/fsm/movement/player_states/fall.gd" type="Script" id=4]
+[ext_resource path="res://src/scripts/fsm/movement/player_states/jump.gd" type="Script" id=5]
 
 [node name="MovementStateManager" type="Node"]
 script = ExtResource( 1 )
@@ -15,6 +15,7 @@ script = ExtResource( 2 )
 animation_name = "Idle"
 move_node = NodePath("../MoveState")
 fall_node = NodePath("../FallState")
+jump_node = NodePath("../JumpState")
 
 [node name="MoveState" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -26,8 +27,8 @@ idle_node = NodePath("../IdleState")
 [node name="FallState" type="Node" parent="."]
 script = ExtResource( 4 )
 animation_name = "Fall"
-move_node = NodePath("../MoveState")
 idle_node = NodePath("../IdleState")
+move_node = NodePath("../MoveState")
 
 [node name="JumpState" type="Node" parent="."]
 script = ExtResource( 5 )
