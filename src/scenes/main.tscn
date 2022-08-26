@@ -1,7 +1,5 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://src/Sprite3D.gd" type="Script" id=1]
-[ext_resource path="res://src/CubeSprite.gd" type="Script" id=2]
 [ext_resource path="res://src/scenes/character/character.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Building.png" type="Texture" id=4]
 [ext_resource path="res://assets/road/benchbeu.png" type="Texture" id=5]
@@ -16,7 +14,7 @@
 [sub_resource type="GDScript" id=5]
 script/source = "extends Spatial
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Camera.translation.x = $Character.translation.x
 	
 "
@@ -38,9 +36,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.65 )
 script = SubResource( 5 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0467759, 0.783157, 5.39303 )
-run_speed = 4
-jump_speed = 16
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0467759, 0.783157, 9.62357 )
 
 [node name="Map" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.85129, -0.39 )
@@ -84,9 +80,6 @@ texture = ExtResource( 8 )
 
 [node name="Floor" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.135, 5.234 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 shape = SubResource( 2 )
@@ -100,10 +93,6 @@ size = 18.0
 
 [node name="CubeSprite" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62148, 0.70655, 5.67697 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite3D" type="Sprite3D" parent="CubeSprite"]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -126,4 +115,3 @@ shape = SubResource( 4 )
 [node name="Sprite3D" type="Sprite3D" parent="SimpleCube"]
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 1, 0, 0, -1.57 )
 texture = ExtResource( 4 )
-script = ExtResource( 1 )
