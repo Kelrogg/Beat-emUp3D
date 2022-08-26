@@ -8,8 +8,6 @@ var velocity := Vector3.ZERO
 var v_speed: float = 0
 var jumping := false
 
-var frame = 0
-
 func _physics_process(delta: float) -> void:
 #	print('z - %d' % z_index)	# оставь строчку - мне понравилась
 	
@@ -42,15 +40,17 @@ func _physics_process(delta: float) -> void:
 	if velocity.x == 0:
 		$AnimatedSprite.animation = "idle"
 
+	$AnimatedSprite.translation.y = translation.z
+
 func get_input():
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_down"):
-		velocity.z += 1
-	if Input.is_action_pressed("ui_up"):
 		velocity.z -= 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.z += 1
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * run_speed

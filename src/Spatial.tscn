@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/road/grassbeu.png" type="Texture" id=1]
 [ext_resource path="res://assets/road/treesbeu.png" type="Texture" id=2]
@@ -10,41 +10,42 @@
 [ext_resource path="res://assets/road/roadbeu.png" type="Texture" id=8]
 [ext_resource path="res://assets/Isometric_Tiles_Pixel_Art/Blocks/blocks_28.png" type="Texture" id=9]
 [ext_resource path="res://src/Spatial.gd" type="Script" id=10]
+[ext_resource path="res://src/CubeSprite.gd" type="Script" id=11]
+[ext_resource path="res://assets/Building.png" type="Texture" id=12]
+[ext_resource path="res://src/Sprite3D.gd" type="Script" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 7.0256, 8.9248, 0.169528 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 35.7199, 2.13637, 5.6543 )
+extents = Vector3( 35.7199, 2.13637, 7.21548 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.221024, 0.170775, 2.96177 )
+extents = Vector3( 0.221024, 0.170775, 2.55149 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 3.98804, 2.94832, 2.34026 )
 
 [node name="Spatial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.65 )
 script = ExtResource( 10 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.21336, 8.82838 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0467759, 0.783157, 5.39303 )
 run_speed = 4
 jump_speed = 16
 
-[node name="Wall" type="StaticBody" parent="."]
-collision_layer = 5
-collision_mask = 0
-__meta__ = {
-"_edit_group_": true
-}
-
 [node name="Map" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.85129, -0.39 )
 collision_layer = 5
 collision_mask = 2
 
 [node name="BGWall" type="CollisionShape" parent="Map"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -0.451775 )
 shape = SubResource( 1 )
 
 [node name="FrontWall" type="CollisionShape" parent="Map"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 10.4983 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 11.8828 )
 shape = SubResource( 1 )
 
 [node name="Grass" type="Sprite3D" parent="Map"]
@@ -56,7 +57,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.311784 )
 texture = ExtResource( 2 )
 
 [node name="Road" type="Sprite3D" parent="Map"]
-transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, -0.0290377, 0.184895 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0864683, 0.189903 )
 texture = ExtResource( 8 )
 
 [node name="Fence" type="Sprite3D" parent="Map"]
@@ -74,24 +75,48 @@ texture = ExtResource( 7 )
 [node name="Sidewalk" type="Sprite3D" parent="Map"]
 texture = ExtResource( 6 )
 
-[node name="Cube" type="StaticBody" parent="."]
-transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 0.5, 2.98171, -3.16222, 6.49882 )
-
-[node name="Sprite3D" type="Sprite3D" parent="Cube"]
-texture = ExtResource( 9 )
-
 [node name="Floor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.135, 5.234 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.24093, 4.594 )
 shape = SubResource( 2 )
 
-[node name="Camera2D" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, -1.86264e-08, 0, 1.86264e-08, 1, 0, -3.67207, 16.2223 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11, 9.08, 19.66 )
+projection = 1
+current = true
+fov = 34.4
+size = 18.0
+
+[node name="CubeSprite" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62148, 0.70655, 5.67697 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="CubeSprite"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 0.5, 0, 0, 0 )
+texture = ExtResource( 9 )
 
 [node name="CubeShape" type="StaticBody" parent="."]
-transform = Transform( 4.24264, 0, 0.353553, 0, 6, 0, -4.24264, 0, 0.353553, 2.98171, -3.59959, 6.49882 )
+transform = Transform( 4.24264, 0, 0.353553, 0, 6, 0, -4.24264, 0, 0.353553, 6.62148, 0.26918, 5.67697 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CubeShape"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.00642577, 0.059283, -0.0771093 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.00642574, 0.059283, -0.39 )
 shape = SubResource( 3 )
+
+[node name="SimpleCube" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62, 4.299, 7.994 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SimpleCube"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.669851, -2.10055 )
+shape = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="SimpleCube"]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 1, 0, 0, -1.57 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
