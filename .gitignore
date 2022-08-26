@@ -1,0 +1,6 @@
+## Ignore godot's files
+
+.import/
+*.translation
+export_presets.cfg
+.mono/
