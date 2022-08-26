@@ -1,13 +1,74 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/characters/cyborg/Cyborg_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/characters/cyborg/Cyborg_run.png" type="Texture" id=2]
 [ext_resource path="res://src/scripts/character/character.gd" type="Script" id=3]
 [ext_resource path="res://assets/characters/cyborg/Cyborg_climb.png" type="Texture" id=4]
 [ext_resource path="res://assets/characters/cyborg/Cyborg_jump.png" type="Texture" id=5]
+[ext_resource path="res://src/scenes/character/state_manager.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=35]
 extents = Vector3( 0.791848, 0.017, 0.017 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 16
@@ -49,96 +110,38 @@ flags = 16
 atlas = ExtResource( 5 )
 region = Rect2( 144, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=13]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 16
-atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=32]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=33]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=34]
-flags = 16
-atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 32, 32 )
-
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "Move",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Climb",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": true,
-"name": "idle",
+"name": "Idle",
 "speed": 4.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "jump",
+"name": "Jump",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "climb",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
-"loop": true,
-"name": "run",
-"speed": 12.0
 } ]
 
-[node name="KinematicBody" type="KinematicBody"]
+[node name="Character" type="KinematicBody"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+animated_sprite_node = NodePath("AnimatedSprite")
+move_speed = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138026, 0.0381322, 0 )
@@ -147,6 +150,8 @@ shape = SubResource( 35 )
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, -0.194978, 1.76441, 0 )
 frames = SubResource( 5 )
-animation = "run"
-frame = 1
+animation = "Idle"
+frame = 2
 playing = true
+
+[node name="MovementStateManager" parent="." instance=ExtResource( 6 )]
