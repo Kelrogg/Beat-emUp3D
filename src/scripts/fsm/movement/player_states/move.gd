@@ -27,7 +27,7 @@ func physics_process(_delta: float) -> BaseState:
 	managed.velocity.y -= managed.gravity
 	managed.velocity = managed.move_and_slide(managed.velocity, Vector3.UP)
 	
-	managed.animations.translation.y = managed.translation.z
+	managed.animations.translation.y = -managed.translation.z + managed.animations.get_aabb().size.y / 2
 	
 	if !managed.is_on_floor():
 		return fall_state

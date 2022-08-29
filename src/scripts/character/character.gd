@@ -5,7 +5,7 @@ onready var states = $MovementStateManager as BaseStateManager
 
 func _ready() -> void:
 	states.init(self)
-	$AnimatedSprite.translation.y = translation.z
+	$AnimatedSprite.translation.y = -translation.z + $AnimatedSprite.get_aabb().size.y / 2
 
 func _unhandled_input(event: InputEvent) -> void:
 	states.input(event)
