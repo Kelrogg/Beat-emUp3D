@@ -151,8 +151,8 @@ shape = SubResource( 35 )
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, -0.194978, 1.76441, 0 )
 frames = SubResource( 5 )
-animation = "Fall"
-frame = 2
+animation = "Idle"
+frame = 3
 playing = true
 
 [node name="MovementStateManager" parent="." instance=ExtResource( 6 )]

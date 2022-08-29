@@ -30,7 +30,7 @@ extents = Vector3( 7.0256, 8.9248, 0.169528 )
 extents = Vector3( 1.33125, 1.05794, 1.35603 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.314345, 0.302, 1.06566 )
+extents = Vector3( 0.314345, 0.254991, 0.789126 )
 
 [node name="Main" type="Spatial"]
 script = SubResource( 5 )
@@ -107,9 +107,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.64516, 1.13159, 7.9767 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SimpleCube"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.582959, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.666238, -0.782584 )
 shape = SubResource( 4 )
 
 [node name="Sprite3D" type="Sprite3D" parent="SimpleCube"]
-transform = Transform( 14, 0, 0, 0, 14, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 14, 0, 0, 0, 14, 0, 0, 0, 1, 0, 0, -1.54978 )
 texture = ExtResource( 2 )
